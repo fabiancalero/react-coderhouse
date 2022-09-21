@@ -1,14 +1,20 @@
 import React from "react";
-import { Box, IconButton } from "@mui/material";
+import { IconButton } from "@mui/material";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
-const CardWidget = () => {
+function CardWidget() {
+    const buttonStyle = {
+        background: "#5D3FD3"
+    };
+
+    const iconStyle = {
+        color: "#fff"
+    };
+
     return (
-        <Box>
-            <IconButton color="primary" variant="contained">
-                <AddShoppingCartIcon />
-            </IconButton>
-        </Box>
+        <IconButton style={buttonStyle}>
+            <AddShoppingCartIcon style={iconStyle} />
+        </IconButton>
     );
 }
 

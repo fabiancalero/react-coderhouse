@@ -2,15 +2,19 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import PropTypes from 'prop-types';
 
-const ItemListContainer = ({ greeting }) => {
+function ItemListContainer (props) {
+    
+    const boxStyle = {
+        padding: "30px",
+    };
+
     return (
-        <Box style={{
-            padding: "60px",
-            background: "#ebebeb"
-        }}>
-            <Typography align="center">{greeting}</Typography>
+        <Box style={boxStyle}>
+            <Typography variant="h6">
+                {props.greeting}
+            </Typography>
         </Box>
-    );
+     );
 };
 
 ItemListContainer.propTypes = {
