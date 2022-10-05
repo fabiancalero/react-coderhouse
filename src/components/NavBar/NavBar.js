@@ -1,7 +1,8 @@
 import React from "react";
-
-import { Box, Link, Typography } from "@mui/material";
-import CardWidget from "./CardWidget";
+import { Link } from "react-router-dom";
+import { Box, Typography } from "@mui/material";
+import CardWidget from "../CardWidget/CardWidget";
+import { menuItems } from "../../mockAPI/mockAPI";
 
 function NavBar () {
 
@@ -16,23 +17,25 @@ function NavBar () {
 
     const styleMenu = {
         color: "white",
-        padding: "15px"
+        padding: "15px",
+        textDecoration: "none",
     };
 
     return (
         <Box style={mainBox}>
             <Box>
-                <img src="logo.png" alt="PC Power Shop" style={{maxHeight:"60px"}}/>
+                <Link to="/">
+                    <img src="logo.png" alt="PC Power Shop" style={{maxHeight:"60px"}}/>
+                </Link>
             </Box>
 
             <Box>
                 <Typography>
-                    <Link style={styleMenu} href="/">Monitores</Link>
-                    <Link style={styleMenu} href="/">Mouses</Link>
-                    <Link style={styleMenu} href="/">Teclados</Link>
-                    <Link style={styleMenu} href="/">CPU</Link>
-                    <Link style={styleMenu} href="/">GPU</Link>
-                    <Link style={styleMenu} href="/">Sillas Gamer</Link>
+                    {
+                        menuItems.map((menu) => (
+                            <Link style={styleMenu} to={"/category/"+menu.id}>{menu.name}</Link>
+                        ))
+                    }
                 </Typography>
             </Box>
 
