@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# Primeros pasos con el proyecto PC Power Shop
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto es la interfaz de usuario del E-commerce llamado PC POWER SHOP realizado en el curso de React de Coderhouse.\
+Está basado en la idea de crear una tienda de hardware de PC, con una amplia
+disponibilidad de periféricos como así también de elementos fundamentales que necesita una computadora.\
+Esta idea se origina debido al gusto por las computadoras y la página pretende brindarle al cliente una gran variedad
+de artículos al igual que una gran accesibilidad y comodidad al momento de navegar en ella.
 
-## Available Scripts
+## Instalación del proyecto
 
-In the project directory, you can run:
+### Requisitos
+
+- Node
+- Npm
+- Git
+
+### Configuración
+
+1. Clonar el repositorio https://github.com/fabiancalero/react-coderhouse.git
+
+```shell
+git clone https://github.com/fabiancalero/react-coderhouse.git
+```
+
+2. Ir al directorio del nuevo proyecto.
+
+```shell
+cd react-coderhouse
+```
+
+3. Ejecutamos npm install para instalar todos los módulos de node.
+
+```shell
+npm install --force
+```
+
+## Scripts disponibles
+
+En el directorio del proyecto, puedes ejecutar:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Ejecuta la aplicación en el modo de desarrollo.\
+Abrir [http://localhost:3000](http://localhost:3000) para poder verlo en tu navegador.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+La página se volverá a cargar cuando se realicen los cambios.\
+También se pueden ver errores en la consola.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Se crea la aplicación para el servidor de producción en la carpeta `build`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Librerias usadas:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Para este proyecto se utilizaron las siguientes librerías:
 
-### `npm run eject`
+### Material UI
+Material UI es una librería abierta de React que brinda una alta gama de componentes básicos prediseñados con una alta flexibilidad a la hora de customizarlos.\
+Estos componentes son fáciles de utilizar debido a la documentación que posee la librería.\
+Fuente: https://mui.com/
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### React hook forms
+React hooks forms es una librería abierta de React que ayuda a validar formularios.\
+Esta librería es utilizada en el formulario del comprador.\
+Fuente: https://react-hook-form.com/
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -1,0 +1,40 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "indent": [
+            "error",
+            "tab"
+        ],
+        "no-multiple-empty-lines": [
+            "error",
+            { "max": 1, "maxEOF": 0 }
+        ],
+        "no-unused-vars": [
+            "warn"
+        ],
+        "no-useless-escape": 0,
+        "no-dupe-keys": 0,
+        "react/prop-types": 0,
+        "semi": [
+            "warn",
+            "always"
+        ]
+    }
+}

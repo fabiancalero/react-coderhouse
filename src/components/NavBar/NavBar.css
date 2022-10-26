@@ -1,0 +1,18 @@
+.menuItemsBox .MuiButton-root{
+    color: #fff !important;
+}
+
+.menuItemsBox .MuiButton-root:hover {
+    color: #ff6600 !important;
+}
+
+.menuItemsBox {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.mainBox {
+    position: relative;
+}

@@ -1,69 +1,55 @@
-import React, { useEffect, useState } from "react";
-import { Backdrop, Box, CircularProgress, Grid, Typography} from "@mui/material";
+import React, { useContext, useEffect, useState } from "react";
+import { Box, Typography } from "@mui/material";
 import PropTypes from 'prop-types';
-import Item from '../Item/Item';
 import {useParams} from "react-router-dom";
-import { getProducts, getProductsByCategory, menuItems } from "../../mockAPI/mockAPI";
+import { getProductsByCategory, getProducts, } from "../../services/firebase";
+import ItemList from "../ItemList/ItemList";
+import { menuItems } from "../../utils/menu";
+import { appContext } from "../../context/appContext";
 
 function ItemListContainer () {
-    
-    const {id} = useParams();
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(false);
-   
-    useEffect(() => {
-        setLoading(true);
-        if (id === undefined) {
-            getProducts().then((products) => {
-                setProducts(products);
-                setLoading(false);
-            });
-        } else {
-            getProductsByCategory(id).then((products) => {
-                setProducts(products);
-                setLoading(false);
-            });
-        }
-    }, [id]);
+	const {
+		isLoading,
+		handleLoading
+	} = useContext(appContext);
+	const {id} = useParams();
+	const [products, setProducts] = useState([]);
+	
+	useEffect(() => {
+		handleLoading(true);
+		if (id === undefined) {
+			getProducts().then((products) => {
+				setProducts(products);
+				handleLoading(false);
+			});
+		} else {
+			getProductsByCategory(id).then((products) => {
+				setProducts(products);
+				handleLoading(false);
+			});
+		} 
+	}, [id]);
 
+	const boxStyle = {
+		padding: "30px",
+	};
 
-    const boxStyle = {
-        padding: "30px",
-    };
-
-    return (
-        <Box style={boxStyle}>
-            {
-                !loading && 
-                <Box>
-                    <Typography style={{marginBottom: "20px"}}>{menuItems.find((item)=>item.id===id)?.name || "Todos nuestros productos" }</Typography>
-                    <Grid container spacing={3}>
-                        {
-                            products.map((product) => <Grid key={product.id} item xs={3}>
-                                <Item 
-                                    id={product.id}
-                                    key={product.id}
-                                    img={product.img}
-                                    title={product.title}
-                                    price={product.price}
-                                    stock={product.stock}
-                                    category={product.category}
-                                />
-                            </Grid>)
-                        }
-                    </Grid>
-                </Box>
-            }
-            <Backdrop invisible={!loading} open={loading}>
-                <CircularProgress color="inherit" />
-            </Backdrop>
-        </Box>
-     );
-     
-};
+	return (
+		<Box style={boxStyle}>
+			{
+				!isLoading && 
+				<Box>
+					<Typography style={{marginBottom: "20px"}}>{menuItems.find((item)=>item.id===id)?.name || "Todos nuestros productos" }</Typography>
+					<ItemList products={products}/>
+				</Box>
+			}
+		</Box>
+	);
+	
+}
 
 ItemListContainer.propTypes = {
-    greeting: PropTypes.string,
+	greeting: PropTypes.string,
 };
 
 export default ItemListContainer;

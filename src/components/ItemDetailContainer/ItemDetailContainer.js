@@ -1,45 +1,59 @@
-import { Backdrop, CircularProgress } from '@mui/material';
-import React, { useState, useEffect } from 'react'
+import { Box, Typography } from '@mui/material';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { getProduct } from '../../mockAPI/mockAPI';
+import { appContext } from '../../context/appContext';
+import { getProduct } from "../../services/firebase";
+import GoHome from '../GoHome/GoHome';
 import ItemDetail from '../ItemDetail/ItemDetail';
 
 function ItemDetailContainer() {
-  const { id } = useParams();
-  const [product, setProduct] = useState({});
-  const [loading, setLoading]= useState(false);
+	const {
+		isLoading,
+		handleMessage,
+		handleLoading,
+	} = useContext(appContext);
 
-  useEffect (()  => {
-    setLoading(true);
+	const { id } = useParams();
+	const [product, setProduct] = useState(null);
 
-    getProduct(id).then((prod) => {
-      setProduct(prod);
-      setLoading(false);
-    });
-  }, [id]);
+	useEffect (()  => {
+		handleLoading(true);
+		getProduct(id).then((prod) => {
+			setProduct(prod);
+			handleLoading(false);
+		}).catch((error) => {
+			setProduct(null);
+			handleMessage(error.message, "error");
+			handleLoading(false);
+		});
+	}, [id]);
 
-  return (
-    <div style={{padding:"30px"}}>
-      {
-        !loading &&  <ItemDetail
-          id={product.id}
-          key={product.id}
-          img={product.img}
-          title={product.title}
-          price={product.price}
-          stock={product.stock}
-          category={product.category}
-          description={product.description}
-       />
-       
-      }
-      <Backdrop invisible={!loading} open={loading}>
-        <CircularProgress color="inherit" />
-      </Backdrop>
-     
-    </div>
-  )
+	return (
+		<div style={{padding:"30px"}}>
+			{
+				!isLoading && product &&
+				<ItemDetail
+					id={product.id}
+					key={product.id}
+					img={product.img}
+					title={product.title}
+					price={product.price}
+					stock={product.stock}
+					category={product.category}
+					description={product.description}
+				/>
+			}
+			{
+				!isLoading && !product &&
+				<Box style={{textAlign: "center"}}>2
+					<Typography style={{marginBottom:"15px"}}>
+						Producto no encontrado.
+					</Typography>
+					<GoHome/>
+				</Box>
+			}
+		</div>
+	);
 }
-
 
 export default ItemDetailContainer;

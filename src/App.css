@@ -3,3 +3,6 @@ body{
     background: rgba(40, 69, 210, 0.1);
 }
 
+.MuiTextField-root {
+    width: 100%;
+}
